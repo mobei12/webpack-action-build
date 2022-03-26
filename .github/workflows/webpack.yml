@@ -1,0 +1,28 @@
+name: NodeJS with Webpack tests
+
+on:
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+			- name: cache Node Dependencies
+			  id:cache
+              uses: actions/cache@v1
+			  with:
+			    path: node_modules
+				key: ${{runner.os}}-npm-caches-${{ hashFiles('package-lock.json')}}
+            - name: Install Dependencies
+			  if: steps.cache.outputs.cache-hit != 'true'
+              run: npm install -D
+			- name: test Dependencies
+			  if: steps.cache.outputs.cache-hit != 'true'
+			  run: cd ./test/smoke/template
+			  run: npm install -D
+            - name: Test
+              run:  cd  ../../../
+			  run: npm test

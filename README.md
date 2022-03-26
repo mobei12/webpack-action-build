@@ -11,3 +11,5 @@ npm run test
 #### [assert](https://github.com/browserify/commonjs-assert)
 
 #### 查看测试覆盖率 [istanbul](https://github.com/gotwarlost/istanbul)
+
+#### 使用 git action 缓存
