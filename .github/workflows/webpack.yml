@@ -18,10 +18,12 @@ jobs:
                 key: ${{runner.os}}-npm-caches-${{ hashFiles('package-lock.json')}}
             - name: Install Dependencies
               if: steps.cache.outputs.cache-hit != 'true'
-              run: npm install
+              run: |
+               npm install
             - name: test Dependencies
               if: steps.cache.outputs.cache-hit != 'true'
               run: |
-               ./test/smoke/template npm  install
+               ./test/smoke/template
+               npm  install
             - name: Test
               run: npm test
