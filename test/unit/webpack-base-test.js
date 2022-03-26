@@ -6,18 +6,16 @@ describe('webpack.base.js test case', () => {
 	it('entry', () => {
 		try {
 			assert.equal(
-				baseConfig.entry.index,
-				'/Users/mobeigege/personProject/git/webpack-test/builder-webpack/test/smoke/template/src/index/index.js'
+				baseConfig.entry.index.indexOf(
+					'builder-webpack/test/smoke/template/src/index/index.js'
+				) > -1,
+				true
 			)
-		} catch (err) {
-			console.log(err)
-		}
-	})
-	it('output', () => {
-		try {
 			assert.equal(
-				baseConfig.output.output,
-				'/Users/mobeigege/personProject/git/webpack-travis-build/test/smoke/template/dist'
+				baseConfig.entry.search.indexOf(
+					'builder-webpack/test/smoke/template/src/search/index.js'
+				) > -1,
+				true
 			)
 		} catch (err) {
 			console.log(err)
