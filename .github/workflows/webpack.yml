@@ -27,7 +27,7 @@ jobs:
             - name: test Dependencies
               if: steps.cache.outputs.cache-hit != 'true'
               run: |
-               ./test/smoke/template
+               cd ./test/smoke/template
                npm  install --force
             - name: Test
               run: npm test
