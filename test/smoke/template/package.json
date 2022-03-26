@@ -4,10 +4,6 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"build": "webpack --config ./build/webpack.prod.js",
-		"watch": "webpack --watch --mode development ",
-		"dev": "webpack-dev-server  --config ./build/webpack.dev.js",
-		"build:ssr": "webpack --config ./build/webpack.ssr.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",
