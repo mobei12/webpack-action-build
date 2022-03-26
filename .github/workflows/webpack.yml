@@ -10,19 +10,19 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-			- name: Cache Node Dependencies
+			-name: Cache Node Dependencies
 			  id:cache
               uses: actions/cache@v1
 			  with:
 			    path: node_modules
 				key: ${{runner.os}}-npm-caches-${{ hashFiles('package-lock.json')}}
-            - name: Install Dependencies
+            -name: Install Dependencies
 			  if: steps.cache.outputs.cache-hit != 'true'
               run: npm install -D
-			- name: test Dependencies
+			-name: test Dependencies
 			  if: steps.cache.outputs.cache-hit != 'true'
 			  run: cd ./test/smoke/template
 			  run: npm install -D
-            - name: Test
+            -name: Test
               run:  cd  ../../../
 			  run: npm test
