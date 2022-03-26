@@ -14,20 +14,20 @@ jobs:
               uses: actions/checkout@master #检出的依赖
               with:
                 persist-credentials: false #不保存证书
-            - name: Cache Node Dependencies
+            - name: Cache Node Dependencies #设置依赖缓存
               id: cache
               uses: actions/cache@v1
               with:
                 path: node_modules
                 key: ${{runner.os}}-npm-caches-${{ hashFiles('package-lock.json')}}
-            - name: Install Dependencies
+            - name: Install Dependencies #安装外层依赖
               if: steps.cache.outputs.cache-hit != 'true'
               run: |
                npm install --force
-            - name: test Dependencies
+            - name: test Dependencies #安装内层依赖
               if: steps.cache.outputs.cache-hit != 'true'
               run: |
                cd ./test/smoke/template
                npm  install --force
-            - name: Test
+            - name: Test #测试
               run: npm test
