@@ -23,11 +23,11 @@ jobs:
             - name: Install Dependencies
               if: steps.cache.outputs.cache-hit != 'true'
               run: |
-               npm install
+               npm install --force
             - name: test Dependencies
               if: steps.cache.outputs.cache-hit != 'true'
               run: |
                ./test/smoke/template
-               npm  install
+               npm  install --force
             - name: Test
               run: npm test
